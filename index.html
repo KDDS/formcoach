@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07080c" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="FormCoach" />
+  <link rel="manifest" href="manifest.json" />
+  <title>FormCoach</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="splash" id="splash">
+    <div class="card">
+      <h1>FormCoach</h1>
+      <p>iPhone coach. No computer. Add this page to your Home Screen, then AirPlay to the TV.</p>
+      <ol>
+        <li>Safari → Share → Add to Home Screen.</li>
+        <li>Open FormCoach and allow the camera.</li>
+        <li>Stand so head and feet are in frame.</li>
+        <li>Control Center → Screen Mirroring → your TV or Apple TV.</li>
+        <li>Prop the phone facing you. The TV shows this screen.</li>
+      </ol>
+      <button class="btn btn-go" id="startCam">Turn camera on</button>
+    </div>
+  </div>
+  <header class="topbar">
+    <div class="brand">FormCoach</div>
+    <select class="ex-select" id="exercise"></select>
+    <div class="stats">
+      <div class="stat"><b id="repCount">0</b><span>reps</span></div>
+      <div class="stat"><b id="formScore">—</b><span>form</span></div>
+      <div class="stat"><b id="phaseLabel">idle</b><span>phase</span></div>
+    </div>
+    <button class="btn btn-go" id="toggleSession">Start set</button>
+    <button class="btn btn-ghost" id="resetBtn">Reset</button>
+    <button class="btn btn-ghost" id="muteBtn">Voice on</button>
+  </header>
+  <main class="stage">
+    <section class="pane">
+      <div class="tag">You · live</div>
+      <svg class="score-ring" viewBox="0 0 36 36" aria-hidden="true">
+        <path d="M18 2.5 a 15.5 15.5 0 0 1 0 31 a 15.5 15.5 0 0 1 0 -31" fill="none" stroke="#1c2430" stroke-width="3"/>
+        <path id="ringArc" d="M18 2.5 a 15.5 15.5 0 0 1 0 31 a 15.5 15.5 0 0 1 0 -31" fill="none" stroke="#5eead4" stroke-width="3" stroke-dasharray="0 100" stroke-linecap="round"/>
+      </svg>
+      <video id="cam" playsinline autoplay muted></video>
+      <canvas class="overlay" id="overlay"></canvas>
+      <div class="coach-bar">
+        <h2 id="cueTitle">Get in frame</h2>
+        <p id="cueBody">Stand facing the camera with head and feet visible.</p>
+      </div>
+    </section>
+    <section class="pane ref">
+      <div class="tag">Coach · target posture</div>
+      <canvas id="refCanvas"></canvas>
+      <div class="ref-copy">
+        <h3 id="refTitle">Squat</h3>
+        <ul id="refTips"></ul>
+      </div>
+    </section>
+  </main>
+  <footer class="dock">
+    <span id="visibility">Looking for you…</span>
+    <span class="status" id="netStatus">On device · no account</span>
+  </footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
